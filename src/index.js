@@ -36,8 +36,7 @@ function formatDate(date) {
   return formattedDate;
 }
 
-let today = document.querySelector("#date");
-today.innerHTML = formatDate(now);
+document.querySelector("#date").innerHTML = formatDate(now);
 
 function formatTime(time) {
   let hours = now.getHours();
@@ -51,8 +50,7 @@ function formatTime(time) {
 
   return `${hours}:${minutes}`;
 }
-let time = document.querySelector("#time");
-time.innerHTML = formatTime(now);
+document.querySelector("#time").innerHTML = formatTime(now);
 
 ////////
 function showTemperature(response) {
