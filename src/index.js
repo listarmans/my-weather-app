@@ -1,6 +1,5 @@
-let now = new Date();
-
-function formatDate(date) {
+function formatDate(timestamp) {
+  let date = new Date(timestamp);
   let weekDay = [
     "Sunday",
     "Monday",
@@ -26,37 +25,36 @@ function formatDate(date) {
     "December"
   ];
 
-  let currentDay = weekDay[now.getDay()];
-  let currentMonth = month[now.getMonth()];
-  let currentYear = now.getFullYear();
-  let currentDate = now.getDate();
+  let currentDay = weekDay[date.getDay()];
+  let currentMonth = month[date.getMonth()];
+  let currentYear = date.getFullYear();
+  let currentDate = date.getDate();
 
   let formattedDate = `${currentDay}, ${currentMonth} ${currentDate}, ${currentYear}`;
 
   return formattedDate;
 }
 
-let today = document.querySelector("#date");
-today.innerHTML = formatDate(now);
-
-function formatTime(time) {
-  let hours = now.getHours();
+function formatTime(timestamp){
+  let time = new Date (timestamp);
+  let hours = time.getHours();
   if (hours < 10) {
     hours = `0${hours}`;
   }
-  let minutes = now.getMinutes();
+  let minutes = time.getMinutes();
   if (minutes < 10) {
     minutes = `0${minutes}`;
   }
-
-  return `Time: ${hours}:${minutes}`;
+  return `${hours}:${minutes}`;
 }
-let time = document.querySelector("#time");
-time.innerHTML = formatTime(now);
+
 
 function showTemperature(response) {
+  console.log(response.data);
   celsiusTemperature = response.data.main.temp;
   feelingTemperature = response.data.main.feels_like;
+  let dateElement = document.querySelector("#date");
+  let timeElement = document.querySelector("#time");
   document.querySelector("#city").innerHTML = response.data.name;
   document.querySelector("#temperature").innerHTML = `${Math.round(
     celsiusTemperature
@@ -67,30 +65,39 @@ function showTemperature(response) {
   document.querySelector("#icon").setAttribute("alt", response.data.weather[0].description);
   document.querySelector("#feeling").innerHTML = `Feels like ${Math.round(
     feelingTemperature)} °C`;
-  document.querySelector("#humidity").innerHTML = `${Math.round(
+  document.querySelector("#humidity").innerHTML = `Humidity: ${Math.round(
     response.data.main.humidity
   )}%`;
-  document.querySelector("#wind").innerHTML = `${Math.round(
+  document.querySelector("#wind").innerHTML = `Wind speed: ${Math.round(
     response.data.wind.speed
   )} km/h`;
+  dateElement.innerHTML = formatDate(response.data.dt * 1000);
+  timeElement.innerHTML = `Time: ${formatTime(response.data.dt * 1000)}`;
 }
+
 
 function showForecast(response) {
   let forecastElement = document.querySelector("#forecast");
-  forecastElement.innerHTML = 
-  `<div class="col-2">
-                <div class="future-time">
-                 12:00
-                </div>
-                <img
-                 src="https://ssl.gstatic.com/onebox/weather/48/rain_s_cloudy.png"
-                 alt=""
-                />
-                <div class="weather-forecast-temperature">
-                 <strong>16</strong> 15
-                </div>
-            </div>`
-}
+  forecastElement.innerHTML = null;
+  let forecast = null;
+
+  for (let index = 0; index < 6; index++){
+    forecast = response.data.list[index];
+    forecastElement.innerHTML += 
+      `<div class="col-2">
+       <div class="future-time">
+          ${formatTime(forecast.dt * 1000)}
+       </div>
+        <img
+          src="http://openweathermap.org/img/wn/${forecast.weather[0].icon}@2x.png"
+          alt=""
+          />
+        <div class="weather-forecast-temperature">
+          <strong>${Math.round(forecast.main.temp_max)}</strong> | ${Math.round(forecast.main.temp_min)}°C
+       </div>
+     </div>
+     `;}
+  }
 
 function searchCity(city) {
   let apiKey = "06ca6b2e6fb5a01a965d59c5f70dc4cc";

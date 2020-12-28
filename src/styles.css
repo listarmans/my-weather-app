@@ -15,7 +15,7 @@ i {
   padding-top: 37px;
 }
 
-.weathe-app-wrapper {
+.weather-app-wrapper {
   max-width: 1000px;
   margin: 30px auto;
 }
@@ -73,19 +73,22 @@ i {
 
 .icons {
   text-align: center;
+  width: 90px;
+  height: 90px;
+}
+
+.fa-water,
+.fa-wind {
+  padding: 30px 30px 20px 30px;
 }
 
 #icon {
-  width: 58px;
-  height: 58px;
+  width: 90px;
+  height: 90px;
 }
 
-#weather-description {
+#weather-description::first-letter {
   text-transform: capitalize;
-}
-
-.card {
-  text-align: center;
 }
 
 .col {
@@ -103,4 +106,9 @@ i {
   color: #ff2fa2;
   padding-top: 20px;
   padding-left: 30px;
+}
+
+.future-time,
+.weather-forecast-temperature {
+  text-align: center;
 }
