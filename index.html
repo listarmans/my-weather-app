@@ -13,19 +13,21 @@
 </head>
 
 <body>
+    <div class="weathe-app-wrapper">
     <div class="weather">
+        
         <div class="container search">
             <div class="row">
                 <div class="col">
                     <form id="search-form">
                         <input type="text" id="city-input" placeholder="Enter city" autofocus="on" />
                         <input type="submit" value="Search" class="search-button" />
-                        <button class="value" id="celcius">°C</button>
-                        <button class="value" id="fahrenheit">°F</button>
                         <button type="search" id="my-location">
                             Current location
                         </button>
                     </form>
+                    <button class="value" id="celcius">°C</button>
+                    <button class="value" id="fahrenheit">°F</button>
                 </div>
             </div>
         </div>
@@ -69,72 +71,30 @@
                 </div>
             </div>
         </div>
-
-        <div class="future">
-            The next five days...
-        </div>
-
-        <div class="following-week">
-            <div class="card">
-                <div class="card-body">
-                    <div class="row future-forecast">
-                        <div class="col">
-                            <div class="card" style="width: 100px;">
-                                <i class="fas fa-sun"></i>
-                                <div class="card-body">
-                                    <p class="card-title">16°C</p>
-                                    <p class="card-text">Mon</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col">
-                            <div class="card" style="width: 100px;">
-                                <i class="fas fa-sun"></i>
-                                <div class="card-body">
-                                    <p class="card-title">19°C</p>
-                                    <p class="card-text">Tue</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col">
-                            <div class="card" style="width: 100px;">
-                                <i class="fas fa-sun"></i>
-                                <div class="card-body">
-                                    <p class="card-title">16°C</p>
-                                    <p class="card-text">Wed</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col">
-                            <div class="card" style="width: 100px;">
-                                <i class="fas fa-sun"></i>
-                                <div class="card-body">
-                                    <p class="card-title">11°C</p>
-                                    <p class="card-text">Thu</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col">
-                            <div class="card" style="width: 100px;">
-                                <i class="fas fa-sun"></i>
-                                <div class="card-body">
-                                    <p class="card-title">15°C</p>
-                                    <p class="card-text">Fri</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <h5 class="theNextHours">The next hours...</h5>
+        <div class="row weather-forecast" id="forecast">
+            <div class="col-2">
+                <div class="future-time">
+                 12:00
+                </div>
+                <img
+                 src="https://ssl.gstatic.com/onebox/weather/48/rain_s_cloudy.png"
+                 alt=""
+                />
+                <div class="weather-forecast-temperature">
+                 <strong>16</strong> 15
                 </div>
             </div>
         </div>
+
+        
+        </div>
+        <p>
+            <a href="https://github.com/listarmans/my-weather-app">Open-sourced</a> by Li
+        </p>
     </div>
-    <p>
-        <a href="https://github.com/listarmans/my-weather-app">Open-sourced</a> by Li
-    </p>
+    
+
         <script src="src/index.js"></script>
 </body>
 

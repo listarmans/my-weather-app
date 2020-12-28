@@ -4,16 +4,27 @@ body {
   background: #d6e0f0;
 }
 
+i {
+  color: #8d93ab;
+  text-align: center;
+  padding-top: 15px;
+  font-size: 40px;
+}
+
 .search {
   padding-top: 37px;
+}
+
+.weathe-app-wrapper {
+  max-width: 1000px;
+  margin: 30px auto;
 }
 
 .weather {
   padding: 10px 50px;
   height: 550px;
-  width: 65%;
   border-radius: 35px;
-  background-color: #f1f3f8;
+  background-color: #ffffff;
   box-shadow: 2px 3px 14px rgba(0, 0, 0, 0.2);
   margin: 10% auto 10px;
 }
@@ -33,9 +44,12 @@ body {
 }
 
 .search-button:hover,
-button:hover {
+.value:hover {
   background: #31326f;
   color: #f6f2fe;
+}
+.value {
+  margin: 3px auto;
 }
 
 .container-results {
@@ -48,11 +62,13 @@ button:hover {
   font-size: 35px;
   color: #31326f;
   padding-top: 22px;
+  padding-left: 10px;
 }
 
 .date,
 .time {
   font-size: 1rem;
+  padding-left: 10px;
 }
 
 .icons {
@@ -77,20 +93,14 @@ button:hover {
   padding-right: 0px;
 }
 
-.future {
-  padding-top: 20px;
-  padding-left: 16px;
+.weather-forecast {
+  padding-top: 5px;
+  padding-left: 30px;
   padding-bottom: 5px;
+}
+
+.theNextHours {
   color: #ff2fa2;
-}
-
-.future-forecast {
-  border: transparent;
-}
-
-i {
-  color: #8d93ab;
-  text-align: center;
-  padding-top: 15px;
-  font-size: 40px;
+  padding-top: 20px;
+  padding-left: 30px;
 }
