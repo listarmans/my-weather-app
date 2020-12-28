@@ -49,20 +49,21 @@ function formatTime(time) {
     minutes = `0${minutes}`;
   }
 
-  return `${hours}:${minutes}`;
+  return `Time: ${hours}:${minutes}`;
 }
 let time = document.querySelector("#time");
 time.innerHTML = formatTime(now);
 
 ////////
 function showTemperature(response) {
-  console.log(response.data);
   document.querySelector("#city").innerHTML = response.data.name;
   document.querySelector("#temperature").innerHTML = `${Math.round(
     response.data.main.temp
   )} °C`;
   document.querySelector("#weather-description").innerHTML =
     response.data.weather[0].description;
+  document.querySelector("#icon").setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+  document.querySelector("#icon").setAttribute("alt", response.data.weather[0].description);
   document.querySelector("#feeling").innerHTML = `Feels like ${Math.round(
     response.data.main.feels_like
   )} °C`;

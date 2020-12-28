@@ -59,6 +59,11 @@ button:hover {
   text-align: center;
 }
 
+#icon {
+  width: 58px;
+  height: 58px;
+}
+
 #weather-description {
   text-transform: capitalize;
 }
