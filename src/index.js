@@ -50,7 +50,6 @@ function formatTime(timestamp){
 
 
 function showTemperature(response) {
-  console.log(response.data);
   celsiusTemperature = response.data.main.temp;
   feelingTemperature = response.data.main.feels_like;
   let dateElement = document.querySelector("#date");
@@ -73,6 +72,7 @@ function showTemperature(response) {
   )} km/h`;
   dateElement.innerHTML = formatDate(response.data.dt * 1000);
   timeElement.innerHTML = `Time: ${formatTime(response.data.dt * 1000)}`;
+  showForecast();
 }
 
 
