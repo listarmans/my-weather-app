@@ -72,7 +72,6 @@ function showTemperature(response) {
   )} km/h`;
   dateElement.innerHTML = formatDate(response.data.dt * 1000);
   timeElement.innerHTML = `Time: ${formatTime(response.data.dt * 1000)}`;
-  showForecast();
 }
 
 
@@ -119,6 +118,9 @@ function searchLocation(position) {
   let units = "metric";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${position.coords.latitude}&lon=${position.coords.longitude}&appid=${apiKey}&units=${units}`;
   axios.get(apiUrl).then(showTemperature);
+
+  apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(showForecast);
 }
 
 function localWeather(event) {
